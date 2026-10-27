@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b10">
+<title>XX Mano — Central de Keys</title>
+<style>
+:root{color-scheme:dark;--bg:#090a0f;--panel:#11131b;--panel2:#151823;--line:#292d3b;--text:#f5f6fa;--muted:#969bad;--orange:#ff8a1f;--orange2:#ffb34d;--green:#43d9a3;--red:#ff6b6b;--radius:20px;--shadow:0 24px 70px #0006}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 12% -10%,#40200e66,transparent 34%),radial-gradient(ellipse at 95% 5%,#2017444d,transparent 30%),var(--bg)}
+button,input,textarea,select{font:inherit}button{cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease,opacity .16s ease}button:active{transform:translateY(1px)}button:disabled{opacity:.55;cursor:wait}
+.shell{width:min(1320px,100%);margin:auto;padding:26px clamp(14px,3vw,34px) 40px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:6px 0 28px;border-bottom:1px solid #ffffff0d}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand-mark{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,#ffb84d,#ff791b 68%,#d84b10);color:#1b0d03;font-size:15px;font-weight:1000;letter-spacing:-1px;box-shadow:0 8px 30px #ff791b26,inset 0 1px #fff8}.brand-name{font-size:15px;font-weight:950;letter-spacing:1.7px}.brand-sub{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}.top-actions{display:flex;align-items:center;gap:10px}.connection{display:inline-flex;align-items:center;gap:8px;border:1px solid #23493f;background:#10231f;color:#a5f3d8;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:750;white-space:nowrap}.connection-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #43d9a388}.connection.offline{background:#2a1918;border-color:#5a2c2c;color:#ffb4b4}.connection.offline .connection-dot{background:var(--red);box-shadow:0 0 12px #ff6b6b88}
+.hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:32px 0 23px}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--orange2);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.eyebrow-mark{width:24px;height:2px;background:var(--orange);box-shadow:0 0 12px #ff8a1f88}.hero h1{font-size:clamp(30px,4.5vw,45px);line-height:1.05;letter-spacing:-1.7px;margin:11px 0 10px}.hero h1 span{color:var(--orange2)}.hero p{max-width:650px;margin:0;color:var(--muted);font-size:14px}.hero-chip{flex-shrink:0;display:flex;align-items:center;gap:9px;border:1px solid #383040;background:linear-gradient(135deg,#1a1722,#11131b);padding:12px 15px;border-radius:14px;color:#d8c9ff;font-size:12px;font-weight:750}.hero-chip svg{width:17px;height:17px;color:#c4a7ff}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 18px}.stat{position:relative;overflow:hidden;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#171a25,#10121a 78%);box-shadow:0 10px 35px #0002;min-width:0}.stat:after{content:"";position:absolute;right:-25px;top:-35px;width:110px;height:110px;border-radius:50%;background:var(--glow,#ff8a1f);opacity:.07;filter:blur(2px)}.stat-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;font-weight:750}.stat-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#ff8a1f16;color:var(--orange2);font-size:17px}.stat-value{font-size:clamp(27px,3vw,35px);font-weight:900;letter-spacing:-1px;margin-top:13px;line-height:1.05}.stat-foot{color:#777e91;font-size:11px;margin-top:8px}.stat:nth-child(2) .stat-icon{background:#a58cff18;color:#c0adff}.stat:nth-child(3) .stat-icon{background:#43d9a316;color:var(--green)}
+.work-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:16px;margin-bottom:16px}.card{min-width:0;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(155deg,#151822,#101219 80%);box-shadow:0 12px 40px #0002;padding:clamp(17px,2.2vw,24px)}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:19px}.card-title{margin:0;font-size:16px;font-weight:850;letter-spacing:-.25px}.card-description{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.6}.step-tag{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:31px;height:31px;border:1px solid #5a3824;background:#2a1b12;border-radius:10px;color:var(--orange2);font-size:12px;font-weight:900}
+label{display:block;color:#c8ccda;font-size:12px;font-weight:750;margin:0 0 8px}.field{width:100%;min-width:0;background:#0b0d13;color:var(--text);border:1px solid #343849;border-radius:12px;padding:12px 14px;outline:none;transition:border-color .16s,box-shadow .16s}.field::placeholder{color:#626879}.field:focus{border-color:#b76b2b;box-shadow:0 0 0 3px #ff8a1f17}.field-row{display:flex;gap:9px;align-items:stretch}.field-row .field{flex:1}.textarea{resize:vertical;min-height:118px;line-height:1.65}.spaced{margin-top:16px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:12px;padding:11px 15px;font-size:12px;font-weight:850;white-space:nowrap}.btn-primary{color:#211005;background:linear-gradient(110deg,#ffc15e,#ff8a1f 75%,#ff7519);box-shadow:0 7px 22px #ff8a1f20,inset 0 1px #fff9}.btn-primary:hover{filter:brightness(1.07)}.btn-quiet{color:#e4e6ef;background:#1c202b;border-color:#353949}.btn-quiet:hover{background:#242936;border-color:#50566a}.btn-danger{color:#ffb1b1;background:#301819;border-color:#6b2c31}.btn-danger:hover{background:#401d20}.btn svg{width:15px;height:15px;flex-shrink:0}.btn-wide{width:100%;margin-top:12px;min-height:45px}.helper{display:flex;align-items:flex-start;gap:9px;margin:12px 0 0;color:#858b9c;font-size:11px;line-height:1.6}.helper b{color:#c4c9d8}.helper-mark{color:var(--orange2);font-size:14px;line-height:1.2}
+.upload-box{display:flex;align-items:center;gap:12px;padding:13px;border:1px dashed #45495b;border-radius:13px;background:#0d0f16;cursor:pointer}.upload-box:hover{border-color:#a45d2b;background:#17130f}.upload-icon{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:12px;background:#ff8a1f16;color:var(--orange2);font-size:19px}.upload-copy{min-width:0;flex:1}.upload-copy strong{display:block;font-size:12px}.upload-copy span{display:block;color:var(--muted);font-size:11px;margin-top:3px;overflow-wrap:anywhere}.upload-box input{display:none}.import-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.import-actions .btn{flex:1}.notice{margin-top:14px;border:1px solid #49351e;background:#201a12;border-radius:12px;padding:12px 13px;color:#c4b7a3;font-size:11px;line-height:1.6}.notice strong{color:#ffbf78}
+.list-card{padding:0;overflow:hidden}.list-head{padding:23px clamp(17px,2.2vw,24px) 18px;border-bottom:1px solid #ffffff0b}.list-title-line{display:flex;align-items:center;justify-content:space-between;gap:14px}.list-title-line .card-head{margin:0}.live-tag{display:inline-flex;align-items:center;gap:7px;color:#9be9cc;font-size:10px;font-weight:850;letter-spacing:1.1px;text-transform:uppercase;white-space:nowrap}.live-tag:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 9px #43d9a388}.list-tools{display:flex;align-items:center;gap:10px;margin-top:18px}.search-wrap{position:relative;flex:1;min-width:130px}.search-wrap .search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#7e8497;font-size:17px;pointer-events:none}.search-wrap input{padding-left:40px}.availability-filter{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid #245340;background:#10251f;color:#9be9cc;border-radius:12px;padding:11px 13px;font-size:12px;font-weight:800}.availability-filter:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px #43d9a388}.list-info{padding:12px clamp(17px,2.2vw,24px);font-size:11px;color:#9298aa;background:#11131b}.key-list{padding:0 clamp(17px,2.2vw,24px)}.key-row{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid #ffffff0c;min-width:0}.key-row:last-child{border-bottom:0}.key-symbol{width:38px;height:38px;display:grid;place-items:center;flex-shrink:0;border-radius:12px;border:1px solid #4c3624;background:#21180f;color:var(--orange2);font-size:17px}.key-main{flex:1;min-width:0}.key-code{font-size:12px;font-weight:800;overflow-wrap:anywhere;color:#f1f2f7}.key-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#858b9d;font-size:10px;margin-top:5px}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #245340;background:#10251f;color:#8de8c6;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:800}.pill:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}.pill.used{border-color:#57402b;background:#251b12;color:#f4bd7d}.row-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}.icon-btn{width:35px;height:35px;display:grid;place-items:center;border:1px solid #343849;border-radius:10px;background:#1b1e29;color:#c7cbd8;font-size:14px}.icon-btn:hover{border-color:#777e91;background:#242936}.icon-btn.delete{color:#ff9696;background:#251719;border-color:#542b30}.icon-btn.delete:hover{background:#3a1b20;border-color:#8b3c42}.empty-state{padding:40px 15px;text-align:center;color:#8b91a3}.empty-state strong{display:block;color:#dce0eb;font-size:13px;margin-bottom:5px}.empty-icon{font-size:26px;color:#686f83;margin-bottom:9px}.list-footer{display:flex;align-items:center;justify-content:center;padding:15px;border-top:1px solid #ffffff0b}.list-footer .btn{min-width:180px}.status{margin:16px 0 0;padding:12px 14px;border:1px solid #33394a;border-radius:12px;background:#11141d;color:#c8cedd;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;display:none}.status.show{display:block}.status.success{border-color:#245340;background:#10211c;color:#9ce8cb}.status.error{border-color:#643139;background:#241518;color:#ffb0b0}.security-note{display:flex;gap:10px;align-items:flex-start;margin-top:18px;padding:13px 15px;border:1px solid #493a25;border-radius:13px;background:#19160f;color:#b6aa95;font-size:11px;line-height:1.6}.security-note strong{color:#f3c27f}.security-icon{font-size:16px;color:#e9ad5f;line-height:1.2}.footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:22px;padding-top:17px;border-top:1px solid #ffffff0c;color:#62697b;font-size:10px;letter-spacing:.5px}.footer b{color:#a2a7b6}
+@media(max-width:850px){.work-grid{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.hero-chip{margin-top:2px}.stats{gap:10px}.stat{padding:16px}.topbar{padding-bottom:21px}}
+@media(max-width:560px){.shell{padding:14px 12px 28px}.topbar{align-items:flex-start}.brand-mark{width:41px;height:41px;border-radius:13px}.brand-name{font-size:13px;letter-spacing:1.1px}.brand-sub{font-size:9px;letter-spacing:1px}.top-actions{gap:0}.connection{padding:8px 10px;font-size:10px}.hero{padding:25px 0 18px;gap:14px}.hero h1{font-size:32px}.hero p{font-size:12px}.hero-chip{font-size:11px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.stat-value{font-size:28px}.card{padding:16px;border-radius:16px}.list-card{padding:0}.list-head{padding:17px 14px 14px}.list-title-line{align-items:flex-start}.list-title-line .card-title{font-size:14px}.live-tag{font-size:9px;letter-spacing:.4px}.list-tools{flex-direction:column;align-items:stretch;gap:8px}.select{width:100%}.key-list{padding:0 13px}.key-row{gap:9px}.key-symbol{width:32px;height:32px;border-radius:10px;font-size:14px}.key-code{font-size:11px}.row-actions{gap:5px}.icon-btn{width:31px;height:31px}.import-actions{display:grid;grid-template-columns:1fr 1fr}.import-actions .btn{white-space:normal;padding:10px 8px}.field-row{flex-direction:column}.field-row .btn{width:100%}.footer{font-size:9px}.security-note{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Identidade XX MANO: preto, branco e cinza, inspirada no logo enviado. */
+:root{color-scheme:dark;--bg:#000;--panel:#090909;--panel2:#101010;--line:#303030;--text:#f5f5f5;--muted:#a0a0a0;--orange:#f0f0f0;--orange2:#fff;--green:#d8d8d8;--red:#888;--radius:7px;--shadow:0 20px 60px #000}
+body{background:#000;color:#f5f5f5}
+.shell{width:min(1320px,100%);padding-top:20px}
+.topbar{border-bottom:1px solid #303030;padding-bottom:20px}
+.brand{gap:17px}
+.brand-logo{display:block;width:clamp(145px,20vw,235px);height:auto;object-fit:contain;background:#000;flex-shrink:0}
+.brand-copy{min-width:0;border-left:1px solid #3b3b3b;padding-left:16px}
+.brand-name{font-size:13px;letter-spacing:2px;color:#fff}
+.brand-sub{letter-spacing:1px;color:#999}
+.connection{border-color:#3b3b3b;background:#111;color:#eee;border-radius:5px}
+.connection-dot{background:#eee;box-shadow:0 0 8px #fff4}
+.connection.offline{background:#161616;border-color:#555;color:#aaa}
+.connection.offline .connection-dot{background:#777;box-shadow:none}
+.hero{padding-top:27px}
+.eyebrow{color:#d8d8d8}
+.eyebrow-mark{background:#fff;box-shadow:none}
+.hero h1 span{color:#fff}
+.hero-chip{background:#101010;border-color:#383838;border-radius:6px;color:#ddd}
+.hero-chip svg{color:#fff}
+.stat,.card{background:#090909;border:1px solid #2e2e2e;border-radius:7px;box-shadow:none}
+.stat:after{background:#fff;opacity:.025;filter:none}
+.stat-icon{background:#1a1a1a;color:#fff;border-radius:5px}
+.stat:nth-child(2) .stat-icon,.stat:nth-child(3) .stat-icon{background:#1a1a1a;color:#ddd}
+.step-tag{border-color:#4a4a4a;background:#161616;color:#fff;border-radius:5px}
+label{color:#d0d0d0}
+.field{background:#030303;border-color:#393939;border-radius:5px;color:#fff}
+.field::placeholder{color:#737373}
+.field:focus{border-color:#ddd;box-shadow:0 0 0 2px #fff1}
+.btn{border-radius:5px}
+.btn-primary{background:#f2f2f2;color:#050505;border-color:#fff;box-shadow:none}
+.btn-primary:hover{filter:brightness(.88)}
+.btn-quiet{background:#151515;border-color:#3a3a3a;color:#eee}
+.btn-quiet:hover{background:#222;border-color:#666}
+.btn-danger{color:#eee;background:#191919;border-color:#666}
+.btn-danger:hover{background:#292929;border-color:#aaa}
+.helper-mark{color:#fff}
+.upload-box{background:#050505;border-color:#555;border-radius:6px}
+.upload-box:hover{border-color:#ddd;background:#111}
+.upload-icon{background:#1b1b1b;color:#fff;border-radius:5px}
+.notice{background:#111;border-color:#444;color:#c6c6c6;border-radius:5px}
+.notice strong{color:#fff}
+.list-head{border-bottom-color:#292929}
+.live-tag{color:#ddd}
+.live-tag:before{background:#ddd;box-shadow:none}
+.availability-filter{background:#121212;border-color:#4b4b4b;color:#eee;border-radius:5px}
+.availability-filter:before{background:#eee;box-shadow:none}
+.list-info{background:#101010;color:#aaa}
+.key-row{border-bottom-color:#242424}
+.key-symbol{background:#151515;border-color:#454545;color:#fff;border-radius:5px}
+.key-code{color:#fff}
+.pill{background:#141414;border-color:#555;color:#eee;border-radius:4px}
+.pill.used{background:#202020;border-color:#666;color:#bbb}
+.icon-btn{background:#151515;border-color:#444;color:#eee;border-radius:5px}
+.icon-btn:hover{background:#252525;border-color:#777}
+.icon-btn.delete{color:#ddd;background:#1b1b1b;border-color:#666}
+.icon-btn.delete:hover{background:#2a2a2a;border-color:#aaa}
+.empty-state{color:#999}
+.empty-state strong{color:#eee}
+.empty-icon{color:#aaa}
+.status{background:#111;border-color:#444;color:#eee;border-radius:5px}
+.status.success{border-color:#777;background:#141414;color:#fff}
+.status.error{border-color:#777;background:#171717;color:#eee}
+.security-note{background:#111!important;border-color:#555!important;color:#bbb!important;border-radius:5px!important}
+.security-note strong,.security-icon{color:#fff!important}
+.footer{border-top:1px solid #292929;color:#858585}
+.footer b{color:#fff}
+@media(max-width:560px){.brand{gap:10px}.brand-logo{width:clamp(105px,32vw,145px)}.brand-copy{padding-left:10px}.brand-name{font-size:10px;letter-spacing:1px}.brand-sub{font-size:8px;letter-spacing:.5px}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand"><img class="brand-logo" src="./xxmano-logo.png" alt="XX Mano"><div class="brand-copy"><div class="brand-name">PAINEL XX MANO</div><div class="brand-sub">Central de gerenciamento de Keys</div></div></div>
+  <div class="top-actions"><div class="connection" id="connectionBadge"><span class="connection-dot"></span><span id="connectionText">Conectando ao Firebase</span></div></div>
+</header>
+<section class="hero">
+  <div><div class="eyebrow"><span class="eyebrow-mark"></span> PAINEL ADMINISTRATIVO</div><h1>Central de <span>Keys.</span></h1><p>Gerencie seu estoque de Keys, configure o link de resgate e acompanhe as alterações em tempo real, em uma única tela.</p></div>
+  <div class="hero-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 19 6v5c0 4.5-3 7.5-7 10-4-2.5-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg> Sincronização em tempo real</div>
+</section>
+<section class="stats" aria-label="Resumo das Keys">
+  <article class="stat" style="--glow:#ff8a1f"><div class="stat-head"><span>Keys disponíveis</span><span class="stat-icon">◇</span></div><div class="stat-value" id="available">—</div><div class="stat-foot">Prontas para serem resgatadas</div></article>
+  <article class="stat" style="--glow:#a58cff"><div class="stat-head"><span>Keys não disponíveis</span><span class="stat-icon">▤</span></div><div class="stat-value" id="total">—</div><div class="stat-foot">Ocultas da lista de estoque</div></article>
+  <article class="stat" style="--glow:#43d9a3"><div class="stat-head"><span>Atualização</span><span class="stat-icon">↻</span></div><div class="stat-value" style="font-size:25px" id="syncState">Ao vivo</div><div class="stat-foot">A lista acompanha o banco automaticamente</div></article>
+</section>
+<div class="work-grid">
+  <section class="card">
+    <div class="card-head"><div><h2 class="card-title">Importar Keys em lote</h2><p class="card-description">Adicione várias Keys de uma vez por arquivo TXT ou colando uma Key por linha.</p></div><span class="step-tag">01</span></div>
+    <label class="upload-box" for="txtFile"><span class="upload-icon">↑</span><span class="upload-copy"><strong>Selecionar arquivo TXT</strong><span id="fileName">Clique para escolher um arquivo .txt</span></span><input id="txtFile" type="file" accept=".txt,text/plain"></label>
+    <div class="spaced"><label for="keysInput">Keys para importar</label><textarea class="field textarea" id="keysInput" rows="5" placeholder="Cole uma Key por linha&#10;KEY-001&#10;KEY-002&#10;KEY-003"></textarea></div>
+    <div class="import-actions"><button class="btn btn-primary" id="addKeys"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Importar Keys</button><button class="btn btn-quiet" id="clearInput">Limpar campos</button></div>
+    <p class="helper"><span class="helper-mark">✦</span><span>Linhas vazias e duplicadas são ignoradas. A importação verifica os registros existentes e envia as novas Keys em lote.</span></p>
+  </section>
+  <section class="card">
+    <div class="card-head"><div><h2 class="card-title">Link de resgate</h2><p class="card-description">Este é o endereço aberto pelo botão principal do site público.</p></div><span class="step-tag">02</span></div>
+    <label for="shortener">URL do Alpha Rede</label>
+    <div class="field-row"><input class="field" id="shortener" type="url" placeholder="https://..." autocomplete="url"><button class="btn btn-primary" id="saveLink">Salvar link</button></div>
+    <p class="helper"><span class="helper-mark">↳</span><span>Use um endereço completo começando com <b>https://</b> ou <b>http://</b>. O site público consulta este valor diretamente no Firebase.</span></p>
+    <div class="notice"><strong>Importante:</strong> confirme se o encurtador aceita o parâmetro de retorno para que o site entregue a Key após a conclusão do fluxo.</div>
+  </section>
+</div>
+<section class="card list-card">
+  <div class="list-head">
+    <div class="list-title-line"><div class="card-head"><div><h2 class="card-title">Estoque de Keys</h2><p class="card-description">A lista é atualizada automaticamente sempre que o Firebase muda.</p></div></div><span class="live-tag">Live sync</span></div>
+    <div class="list-tools"><div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input class="field" id="search" aria-label="Buscar Keys disponíveis" placeholder="Buscar entre as Keys disponíveis..."></div><span class="availability-filter">Somente disponíveis</span><button class="btn btn-quiet" id="refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.4-3"/></svg> Atualizar</button></div>
+  </div>
+  <div class="list-info" id="listInfo">Conectando e carregando Keys...</div>
+  <div class="key-list" id="keyList" aria-live="polite"></div>
+  <div class="list-footer"><button class="btn btn-quiet" id="loadMore" hidden>Mostrar mais Keys ↓</button></div>
+</section>
+<div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn btn-danger" id="removeAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 14h12l1-14M9 7V4h6v3"/></svg> Remover todas as Keys</button></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div class="security-note"><span class="security-icon">⚠</span><span><strong>Nota de segurança:</strong> este projeto está configurado sem login administrativo. As regras atuais do Firebase permitem escrita pública; para uso real, proteja o painel e o banco com autenticação e regras apropriadas antes de publicar.</span></div>
+<footer class="footer"><span>© <span id="year"></span> <b>XX MANO</b></span><span>PAINEL XX MANO · GERENCIAMENTO DE KEYS</span></footer>
+</div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getDatabase,ref,onValue,set,update,remove,get} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import {firebaseConfig} from "./firebase-config.js";
+const app=initializeApp(firebaseConfig),db=getDatabase(app);
+const $=s=>document.querySelector(s);
+let keyData={},displayed=100,hasLoaded=false;
+const PAGE=100;
+const isAvailable=v=>Boolean(v)&&v.status!=='redeemed'&&v.redeemed!==true;
+function keyId(value){return String(value).replace(/[.#$\[\]\/]/g,'_')||'_';}
+function statusMsg(message,type='info'){
+ const box=$('#status');box.textContent=message;box.className='status show'+(type==='success'?' success':type==='error'?' error':'');
+}
+function clearStatus(){const box=$('#status');box.textContent='';box.className='status';}
+function formatDate(value){if(!value)return 'Data não informada';const date=new Date(Number(value));if(Number.isNaN(date.getTime()))return 'Data não informada';return date.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});}
+function setConnection(connected){const badge=$('#connectionBadge');badge.classList.toggle('offline',!connected);$('#connectionText').textContent=connected?'Firebase conectado':'Sem conexão';$('#syncState').textContent=connected?'Ao vivo':'Offline';$('#syncState').style.color=connected?'var(--green)':'var(--red)';}
+onValue(ref(db,'.info/connected'),snap=>setConnection(snap.val()===true),()=>setConnection(false));
+async function loadLink(){try{const s=await get(ref(db,'settings/shortenerUrl'));$('#shortener').value=s.val()||'';}catch(e){statusMsg('Não foi possível ler o link: '+e.message,'error');}}
+$('#saveLink').onclick=async()=>{
+ const url=$('#shortener').value.trim();
+ if(!/^https?:\/\//i.test(url)){statusMsg('Informe um link válido começando com https:// ou http://.','error');return;}
+ const btn=$('#saveLink');btn.disabled=true;
+ try{await set(ref(db,'settings/shortenerUrl'),url);statusMsg('Link de resgate salvo com sucesso.','success');}
+ catch(e){statusMsg('Erro ao salvar o link: '+e.message,'error');}
+ finally{btn.disabled=false;}
+};
+$('#txtFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{$('#keysInput').value=(await f.text()).replace(/^\uFEFF/,'');$('#fileName').textContent=f.name;statusMsg('Arquivo carregado: '+f.name,'success');}catch(err){statusMsg('Não foi possível ler o arquivo selecionado.','error');}};
+$('#clearInput').onclick=()=>{$('#keysInput').value='';$('#txtFile').value='';$('#fileName').textContent='Clique para escolher um arquivo .txt';clearStatus();};
+$('#addKeys').onclick=async()=>{
+ const lines=[...new Set($('#keysInput').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean))];
+ if(!lines.length){statusMsg('Selecione um TXT ou cole pelo menos uma Key.','error');return;}
+ const btn=$('#addKeys');btn.disabled=true;statusMsg('Importando '+lines.length.toLocaleString('pt-BR')+' Keys...');
+ try{
+  const snap=await get(ref(db,'keys')),existing=snap.val()||{},patch={};
+  const existingIds=new Set(Object.keys(existing));let added=0,duplicates=0;const stamp=Date.now();
+  for(const key of lines){const id=keyId(key);if(existingIds.has(id)){duplicates++;continue;}existingIds.add(id);patch['keys/'+id]={key,status:'available',redeemed:false,createdAt:stamp};added++;}
+  if(added)await update(ref(db),patch);
+  $('#keysInput').value='';$('#txtFile').value='';$('#fileName').textContent='Clique para escolher um arquivo .txt';
+  statusMsg(`Importação concluída: ${added.toLocaleString('pt-BR')} Keys adicionadas e ${duplicates.toLocaleString('pt-BR')} duplicadas ignoradas.`,'success');
+ }catch(e){statusMsg('Erro ao importar: '+e.message+'. Confira a URL e as regras do Firebase.','error');}
+ finally{btn.disabled=false;}
+};
+function renderList(){
+ const term=$('#search').value.trim().toLocaleLowerCase('pt-BR');
+ // O estoque exibe exclusivamente Keys que o site público considera disponíveis.
+ // Registros antigos já resgatados podem continuar no Firebase, mas nunca aparecem nesta lista.
+ let entries=Object.entries(keyData).filter(([id,v])=>isAvailable(v)&&String(v?.key??id).toLocaleLowerCase('pt-BR').includes(term));
+ entries.sort((a,b)=>(Number(b[1]?.createdAt)||0)-(Number(a[1]?.createdAt)||0));
+ const availableCount=Object.values(keyData).filter(isAvailable).length;
+ $('#available').textContent=availableCount.toLocaleString('pt-BR');
+ $('#total').textContent=Object.values(keyData).filter(v=>!isAvailable(v)).length.toLocaleString('pt-BR');
+ $('#listInfo').textContent=`Exibindo ${Math.min(displayed,entries.length).toLocaleString('pt-BR')} de ${entries.length.toLocaleString('pt-BR')} Keys disponíveis${term?' encontradas':''}.`;
+ const box=$('#keyList');box.replaceChildren();
+ if(!entries.length){const empty=document.createElement('div');empty.className='empty-state';const ico=document.createElement('div');ico.className='empty-icon';ico.textContent=term?'⌕':'◇';const title=document.createElement('strong');title.textContent=term?'Nenhuma Key encontrada':'Nenhuma Key nesta lista';const desc=document.createElement('span');desc.textContent=term?'Tente pesquisar por outro código.':'Não há Keys disponíveis no momento. Importe novas Keys ou aguarde novos registros.';empty.append(ico,title,desc);box.append(empty);}
+ for(const [id,v] of entries.slice(0,displayed)){
+  const row=document.createElement('div');row.className='key-row';
+  const symbol=document.createElement('div');symbol.className='key-symbol';symbol.textContent='◇';
+  const main=document.createElement('div');main.className='key-main';
+  const code=document.createElement('div');code.className='key-code';code.textContent=String(v?.key??id);
+  const meta=document.createElement('div');meta.className='key-meta';
+  const pill=document.createElement('span');pill.className='pill';pill.textContent='Disponível';
+  const date=document.createElement('span');date.textContent='Adicionada: '+formatDate(v?.createdAt);meta.append(pill,date);main.append(code,meta);
+  const actions=document.createElement('div');actions.className='row-actions';
+  const copy=document.createElement('button');copy.className='icon-btn';copy.type='button';copy.title='Copiar Key';copy.setAttribute('aria-label','Copiar Key '+String(v?.key??id));copy.textContent='▢';copy.onclick=async()=>{try{await navigator.clipboard.writeText(String(v?.key??id));statusMsg('Key copiada para a área de transferência.','success');}catch(e){statusMsg('Não foi possível copiar automaticamente. Selecione o código e copie manualmente.','error');}};
+  const del=document.createElement('button');del.className='icon-btn delete';del.type='button';del.title='Remover Key';del.setAttribute('aria-label','Remover Key '+String(v?.key??id));del.textContent='×';del.onclick=async()=>{if(!confirm('Remover esta Key do Firebase? Esta ação não pode ser desfeita.'))return;del.disabled=true;try{await remove(ref(db,'keys/'+id));statusMsg('Key removida do Firebase. A lista foi sincronizada.','success');}catch(e){statusMsg('Erro ao remover a Key: '+e.message,'error');}finally{del.disabled=false;}};
+  actions.append(copy,del);row.append(symbol,main,actions);box.append(row);
+ }
+ $('#loadMore').hidden=displayed>=entries.length;
+ $('#removeAll').disabled=Object.keys(keyData).length===0;
+}
+onValue(ref(db,'keys'),snap=>{keyData=snap.val()||{};if(!hasLoaded){displayed=PAGE;hasLoaded=true;}renderList();},e=>statusMsg('Falha ao ler Keys: '+e.message,'error'));
+$('#search').oninput=()=>{displayed=PAGE;renderList();};
+$('#loadMore').onclick=()=>{displayed+=PAGE;renderList();};
+$('#refresh').onclick=async()=>{const btn=$('#refresh');btn.disabled=true;try{const s=await get(ref(db,'keys'));keyData=s.val()||{};displayed=PAGE;renderList();statusMsg('Lista consultada novamente.','success');}catch(e){statusMsg('Erro ao atualizar: '+e.message,'error');}finally{btn.disabled=false;}};
+$('#removeAll').onclick=async()=>{
+ if(!Object.keys(keyData).length){statusMsg('Não há Keys para remover.');return;}
+ if(!confirm('ATENÇÃO: deseja apagar TODAS as Keys do Firebase? Esta ação não pode ser desfeita.'))return;
+ if(prompt('Para confirmar, digite REMOVER TODAS')!=='REMOVER TODAS'){statusMsg('Ação cancelada.');return;}
+ const btn=$('#removeAll');btn.disabled=true;statusMsg('Removendo todas as Keys...');
+ try{await remove(ref(db,'keys'));statusMsg('Todas as Keys foram removidas do Firebase.','success');}
+ catch(e){statusMsg('Erro ao remover todas as Keys: '+e.message+'. Confira as regras e permissões do Firebase.','error');}
+ finally{btn.disabled=Object.keys(keyData).length===0;}
+};
+$('#year').textContent=String(new Date().getFullYear());
+loadLink();
+</script>
+</body>
+</html>
