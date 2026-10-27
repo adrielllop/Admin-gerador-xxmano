@@ -1,0 +1,24 @@
+XX MANO CONTROL — PAINEL ADM
+
+RECURSOS
+- Interface responsiva, redesenhada para celular e computador.
+- Status de conexão do Firebase e indicadores de estoque.
+- Configuração do link de resgate do Alpha Rede.
+- Importação em lote via TXT ou texto colado, com deduplicação por ID.
+- Busca somente entre Keys disponíveis, cópia de Key e remoção individual. Keys resgatadas antigas ficam ocultas da lista.
+- Lista e contadores sincronizados em tempo real com o Firebase; o estoque exibe apenas Keys disponíveis, conforme o mesmo critério usado pelo site público.
+- Remoção de todas as Keys com confirmação em duas etapas.
+
+SINCRONIZAÇÃO
+Quando o site público resgata uma Key, o registro é excluído do nó /keys por transação atômica. O listener em tempo real deste painel recebe a alteração e atualiza a lista e os contadores automaticamente.
+
+CONFIGURAÇÃO
+O painel e o site público precisam usar o mesmo projeto Firebase (firebase-config.js).
+
+IMPORTANTE — SEGURANÇA
+As regras fornecidas permitem escrita pública e o painel não tem login. Qualquer pessoa que descubra o endpoint do banco pode modificar ou apagar Keys. Para produção, implemente Firebase Authentication, regras restritas e, idealmente, operações administrativas/resgate em um backend confiável. Não existe autenticação administrativa segura apenas com HTML/JavaScript no navegador.
+
+
+FIREBASE CONFIGURADO
+Realtime Database: https://keys-sistema-xxmano-default-rtdb.firebaseio.com
+Observação: a URL do banco foi atualizada. Os demais campos de firebase-config.js foram mantidos porque somente a URL do Realtime Database foi fornecida. Se este for um projeto Firebase novo, confira apiKey, authDomain, projectId e appId no Console do Firebase.
